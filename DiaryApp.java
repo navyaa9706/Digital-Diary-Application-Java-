@@ -70,7 +70,7 @@ public class DiaryApp {
                 }
                 case 5 -> {
                     System.out.println("\t\t\t\t\t\tLogging out...");
-                    main(args); // restart for new user
+                    main(args);
                     return;
                 }
                 default -> System.out.println("\t\t\t\t\t\tInvalid choice!");
@@ -94,7 +94,6 @@ public class DiaryApp {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
         
-        // Title Panel
         JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel titleLabel = new JLabel("Title:");
         titleLabel.setFont(new Font("Constantia", Font.BOLD, 20));
@@ -103,7 +102,6 @@ public class DiaryApp {
         titlePanel.add(titleLabel);
         titlePanel.add(titleField);
 
-        // Content Panel
         JPanel contentPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel contentLabel = new JLabel("Content:");
         contentLabel.setFont(new Font("Constantia", Font.PLAIN, 20));
@@ -112,24 +110,21 @@ public class DiaryApp {
         JScrollPane scrollPane = new JScrollPane(contentArea);
         contentPanel.add(contentLabel);
 
-        // Wrap content area in its own panel for better spacing
         JPanel contentAreaPanel = new JPanel();
         contentAreaPanel.setLayout(new BoxLayout(contentAreaPanel, BoxLayout.Y_AXIS));
         contentAreaPanel.add(scrollPane);
 
-        // Button Panel
         JPanel buttonPanel = new JPanel();
         JButton saveButton = new JButton("Save Entry");
         saveButton.setPreferredSize(new Dimension(80, 40));
         buttonPanel.add(saveButton);
-        saveButton.setBackground(new Color(60, 179, 113)); // soft green
+        saveButton.setBackground(new Color(60, 179, 113));
         saveButton.setForeground(Color.WHITE);
 
-        // Add all panels to main panel
         panel.add(titlePanel);
         panel.add(contentPanel);
         panel.add(contentAreaPanel);
-        panel.add(Box.createVerticalStrut(10)); // spacing
+        panel.add(Box.createVerticalStrut(10));
         panel.add(buttonPanel);
 
         frame.add(panel, BorderLayout.CENTER);
@@ -144,7 +139,6 @@ public class DiaryApp {
                 int id = (int)(Math.random() * 10000);
                 DiaryEntry entry = new DiaryEntry(id, LocalDate.now(), title, content);
                 diary.addEntry(entry);
-                //JOptionPane.showMessageDialog(frame, "Entry saved successfully!");
                 frame.dispose();
             } else {
                 JOptionPane.showMessageDialog(frame, "Please fill in both title and content.");
